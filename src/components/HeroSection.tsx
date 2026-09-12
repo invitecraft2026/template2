@@ -5,7 +5,7 @@ import { wedding } from "@/config/wedding";
 export function HeroSection({ start }: { start: boolean }) {
   return (
     <section className="relative isolate min-h-[100dvh] w-full overflow-hidden bg-transparent">
-      <div className="relative z-10 flex h-full flex-col items-center justify-between px-6 py-14 text-center">
+      <div className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-between px-6 py-14 text-center">
         <motion.div
           initial={{
             opacity: 0,
