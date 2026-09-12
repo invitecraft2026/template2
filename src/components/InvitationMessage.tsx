@@ -10,7 +10,7 @@ export function InvitationMessage() {
   const [ratio, setRatio] = useState<number | null>(null);
 
   return (
-    <section className="bg-cream px-4 py-10 sm:px-6">
+   <section className="relative px-4 py-10 sm:px-6">
       <div
         className="relative mx-auto w-full max-w-xl"
         style={ratio ? { aspectRatio: ratio } : undefined}

@@ -9,6 +9,7 @@ function getTimeLeft(targetDate: string) {
 
   if (Number.isNaN(target)) {
     console.error("Invalid wedding date:", targetDate);
+
     return {
       days: "00",
       hours: "00",
@@ -29,10 +30,21 @@ function getTimeLeft(targetDate: string) {
     };
   }
 
-  const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((difference / (1000 * 60)) % 60);
-  const seconds = Math.floor((difference / 1000) % 60);
+  const days = Math.floor(
+    difference / (1000 * 60 * 60 * 24)
+  );
+
+  const hours = Math.floor(
+    (difference / (1000 * 60 * 60)) % 24
+  );
+
+  const minutes = Math.floor(
+    (difference / (1000 * 60)) % 60
+  );
+
+  const seconds = Math.floor(
+    (difference / 1000) % 60
+  );
 
   return {
     days: String(days).padStart(2, "0"),
@@ -56,7 +68,17 @@ export function SaveTheDate() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-ivory px-6 py-20">
+    <section
+      className="relative overflow-hidden bg-transparent px-6 py-20"
+      style={{
+        background: "transparent",
+        backgroundColor: "transparent",
+        backgroundImage: "none",
+        backdropFilter: "none",
+        WebkitBackdropFilter: "none",
+        boxShadow: "none",
+      }}
+    >
       <div className="relative mx-auto max-w-md text-center">
         <CornerFrame />
 
@@ -71,37 +93,41 @@ export function SaveTheDate() {
           <div className="mt-10">
             <div className="mt-8 grid grid-cols-4 gap-4">
               <div>
-                <p className="text-3xl font-light tracking-wide text-gold sm:text-4xl">
+                <p className="text-3xl font-light tracking-wide text-champagne drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)] sm:text-4xl">
                   {timeLeft.days}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+
+                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#fff4ea]/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
                   Days
                 </p>
               </div>
 
               <div>
-                <p className="text-3xl font-light tracking-wide text-gold sm:text-4xl">
+                <p className="text-3xl font-light tracking-wide text-champagne drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)] sm:text-4xl">
                   {timeLeft.hours}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+
+                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#fff4ea]/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
                   Hours
                 </p>
               </div>
 
               <div>
-                <p className="text-3xl font-light tracking-wide text-gold sm:text-4xl">
+                <p className="text-3xl font-light tracking-wide text-champagne drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)] sm:text-4xl">
                   {timeLeft.minutes}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+
+                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#fff4ea]/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
                   Minutes
                 </p>
               </div>
 
               <div>
-                <p className="text-3xl font-light tracking-wide text-gold sm:text-4xl">
+                <p className="text-3xl font-light tracking-wide text-champagne drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)] sm:text-4xl">
                   {timeLeft.seconds}
                 </p>
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+
+                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#fff4ea]/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
                   Seconds
                 </p>
               </div>
@@ -110,7 +136,7 @@ export function SaveTheDate() {
         </Reveal>
 
         <Reveal delay={0.2}>
-          <p className="mt-8 text-center text-sm italic text-muted-foreground">
+          <p className="mt-8 text-center text-sm italic text-[#fff4ea]/85 drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]">
             {wedding.time}
           </p>
         </Reveal>

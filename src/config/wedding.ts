@@ -15,128 +15,164 @@ export type WeddingEvent = {
 
 export const wedding = {
   bride: {
-    firstName: "Naina",
-    fullName: "Naina [Surname]",
-    parents: "Daughter of Mr. & Mrs. [Bride's Parents]",
+    firstName: "Zoya",
+    fullName: "Zoya Rahman",
+    parents: "Daughter of Mr. Faisal Rahman & Mrs. Sameera Faisal",
   },
+
   groom: {
-    firstName: "Aariz",
-    fullName: "Aariz [Surname]",
-    parents: "Son of Mr. & Mrs. [Groom's Parents]",
+    firstName: "Rayyan",
+    fullName: "Rayyan Farooq",
+    parents: "Son of Mr. Farooq Ahmed & Mrs. Shabana Farooq",
   },
 
-  initials: "N & A",
+  initials: "Z & R",
 
-  /** Human readable date + time (display only) */
-  date: "Saturday, 14 February 2027",
-  dayName: "Saturday",
-  dayNumber: "14",
-  monthName: "February",
+  /** Human readable date + time */
+  date: "Sunday, 21 March 2027",
+
+  dayName: "Sunday",
+  dayNumber: "21",
+  monthName: "March",
   year: "2027",
-  time: "6:30 PM onwards",
 
-  /** ISO datetime used by the countdown + calendar file. Local time. */
-  dateISO: "2027-02-14T18:30:00",
-  endISO: "2027-02-14T23:30:00",
+  time: "11:00 AM onwards",
 
-  welcomeLine: "Welcome to the",
+  /** Used by countdown + calendar */
+  dateISO: "2027-03-21T11:00:00",
+  endISO: "2027-03-21T16:00:00",
+
+  welcomeLine: "Together with our families",
+
   welcomeTitle: "Nikkah Ceremony",
+
   welcomeJoin: "of",
 
   venue: {
-    name: "[Venue Name]",
-    address: "[Full venue address, City, State]",
-    mapsQuery: "[Venue Name, City]",
+    name: "The Grand Orchid Convention Centre",
+    address: "Kakkanad, Kochi, Kerala 682030",
+    mapsQuery: "The Grand Orchid Convention Centre, Kakkanad, Kochi",
   },
 
   events: [
     {
       id: "mehndi",
-      title: "Mehndi",
-      date: "Thursday, 12 February 2027",
-      time: "5:00 PM",
-      venue: "[Venue / Residence]",
+      title: "Mehndi Evening",
+      date: "Friday, 19 March 2027",
+      time: "6:00 PM",
+      venue: "Rahman Residence, Kochi",
       icon: "lantern",
     },
+
     {
       id: "nikah",
-      title: "Nikah",
-      date: "Saturday, 14 February 2027",
-      time: "6:30 PM",
-      venue: "[Venue Name]",
+      title: "Nikkah Ceremony",
+      date: "Sunday, 21 March 2027",
+      time: "11:00 AM",
+      venue: "The Grand Orchid Convention Centre",
       icon: "crescent",
     },
+
     {
       id: "reception",
-      title: "Reception",
-      date: "Saturday, 14 February 2027",
-      time: "8:00 PM",
-      venue: "[Venue Name]",
+      title: "Wedding Reception",
+      date: "Sunday, 21 March 2027",
+      time: "12:30 PM",
+      venue: "The Grand Orchid Convention Centre",
       icon: "rings",
     },
+
     {
       id: "dinner",
       title: "Walima Dinner",
-      date: "Sunday, 15 February 2027",
-      time: "7:30 PM",
-      venue: "[Venue Name]",
+      date: "Monday, 22 March 2027",
+      time: "7:00 PM",
+      venue: "Royal Garden Banquet Hall, Kochi",
       icon: "dinner",
     },
   ] satisfies WeddingEvent[],
 
   dressCode: {
     description:
-      "We would love for you to join us in soft traditional formals — flowing silhouettes in the palette below.",
+      "We invite you to celebrate with us in elegant traditional attire inspired by warm, romantic and earthy tones.",
+
     colors: [
-      { name: "Ivory", hex: "#FAF7F0" },
-      { name: "Cream", hex: "#F5EFE5" },
-      { name: "Champagne", hex: "#D9C09C" },
-      { name: "Taupe", hex: "#C3B29B" },
-      { name: "Dusty Rose", hex: "#DDBDB6" },
-      { name: "Sage", hex: "#B9C3AE" },
-      { name: "Warm Brown", hex: "#8B7256" },
+      {
+        name: "Ivory",
+        hex: "#F8F3E9",
+      },
+      {
+        name: "Champagne",
+        hex: "#D9C19C",
+      },
+      {
+        name: "Dusty Rose",
+        hex: "#CFA6A3",
+      },
+      {
+        name: "Burgundy",
+        hex: "#6B2637",
+      },
+      {
+        name: "Mauve",
+        hex: "#A8808A",
+      },
+      {
+        name: "Sage",
+        hex: "#A8B09A",
+      },
+      {
+        name: "Warm Brown",
+        hex: "#7A5A48",
+      },
     ],
   },
 
   invitationMessage:
-    "With hearts full of gratitude and joy, we invite you to share in the blessing of our union — an evening of prayers, laughter and celebration with the people we love most.",
+    "With immense joy and gratitude, together with our families, we warmly invite you to witness the beginning of our forever and share in the blessings, laughter and beautiful memories of our special day.",
 
   quote:
-    "\u201cAnd among His signs is this, that He created for you mates from among yourselves, that you may find tranquillity in them.\u201d — placeholder verse, edit in config",
+    "“And He placed between you affection and mercy.” — Quran 30:21",
 
   guestInformation: [
     {
-      title: "Timing",
-      body: "Kindly arrive fifteen minutes before the ceremony so we may begin together.",
+      title: "Arrival",
+      body: "We kindly request our guests to arrive at least 20 minutes before the Nikkah ceremony begins.",
     },
+
     {
       title: "Dress Code",
-      body: "Traditional formals in the ivory and champagne palette shown above.",
+      body: "Elegant traditional or formal attire in soft earthy, burgundy, champagne and neutral tones is warmly encouraged.",
     },
+
     {
-      title: "Children & Family",
-      body: "[Placeholder — add your note about children and family attending.]",
+      title: "Family",
+      body: "Families and children are warmly welcome to join us in celebrating this beautiful occasion.",
     },
+
     {
       title: "Parking",
-      body: "[Placeholder — add parking or valet details for the venue.]",
+      body: "Complimentary guest parking will be available at the venue. Venue staff will be present to assist you on arrival.",
     },
+
     {
       title: "Photography",
-      body: "[Placeholder — add your photography or unplugged-ceremony preference.]",
+      body: "We would love for you to enjoy the ceremony with us. Kindly avoid flash photography during the Nikkah.",
     },
+
     {
       title: "Gifts",
-      body: "[Placeholder — add a gentle note about gifts, if you wish.]",
+      body: "Your presence, prayers and blessings are the greatest gifts we could ask for.",
     },
   ],
 
-  /** Optional background music. Leave empty to keep the control disabled. */
+  /** Optional background music */
   musicSrc: "",
 
   footer: {
-    signOff: "With Love,",
-    thanks: "Thank you for celebrating with us.",
+    signOff: "With Love & Duas,",
+    thanks:
+      "We look forward to celebrating this beautiful beginning with you.",
   },
 } as const;
 

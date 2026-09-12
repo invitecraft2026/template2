@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { Countdown } from "@/components/Countdown";
+import scenicBackground from "@/assets/Animated_scenic_landscape.mp4";
+
 import { DressCode } from "@/components/DressCode";
 import { EnvelopeIntro } from "@/components/EnvelopeIntro";
 import { EventTimeline } from "@/components/EventTimeline";
@@ -11,14 +12,13 @@ import { GuestInfo } from "@/components/GuestInfo";
 import { HeroSection } from "@/components/HeroSection";
 import { InvitationMessage } from "@/components/InvitationMessage";
 import { MusicControl } from "@/components/MusicControl";
-import { RSVP } from "@/components/RSVP";
 import { SaveTheDate } from "@/components/SaveTheDate";
 import { ScratchReveal } from "@/components/ScratchReveal";
 import { VenueSection } from "@/components/VenueSection";
-import { Wishes } from "@/components/Wishes";
 import { wedding } from "@/config/wedding";
 
 const title = `${wedding.bride.firstName} & ${wedding.groom.firstName} — Wedding Invitation`;
+
 const description = `Join us to celebrate the ${wedding.welcomeTitle} of ${wedding.bride.firstName} and ${wedding.groom.firstName} on ${wedding.date}. Open the envelope for details, timings, venue and RSVP.`;
 
 export const Route = createFileRoute("/")({
@@ -39,29 +39,75 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <main className="bg-cream">
-      {!introDone ? <EnvelopeIntro onComplete={() => setIntroDone(true)} /> : null}
+    <main className="relative min-h-screen overflow-x-hidden bg-[#4d1f29]">
+      {/* =========================================
+          GLOBAL VIDEO BACKGROUND
+          ========================================= */}
+      {introDone && (
+        <div className="pointer-events-none fixed inset-0 z-0 h-[100svh] w-full overflow-hidden">
+          <video
+            src={scenicBackground}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            disablePictureInPicture
+            className="h-full w-full object-cover object-center"
+          />
 
+          {/* Global cinematic overlay */}
+          <div className="absolute inset-0 bg-black/15" />
+
+          {/* Burgundy tint so every section matches the theme */}
+          <div className="absolute inset-0 bg-[#541f2e]/10" />
+
+          {/* Slight soft gradient for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+        </div>
+      )}
+
+      {/* =========================================
+          ENVELOPE INTRO
+          ========================================= */}
+      {!introDone && (
+        <EnvelopeIntro onComplete={() => setIntroDone(true)} />
+      )}
+
+      {/* =========================================
+          WEBSITE CONTENT
+          ========================================= */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: introDone ? 1 : 0 }}
-        transition={{ duration: 0.9, ease: "easeInOut" }}
+        animate={{
+          opacity: introDone ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.9,
+          ease: "easeInOut",
+        }}
+        className="relative z-10"
       >
         <HeroSection start={introDone} />
+
         <ScratchReveal />
+
         <InvitationMessage />
+
         <EventTimeline />
+
         <SaveTheDate />
-        {/* <Countdown /> */}
+
         <VenueSection />
+
         <DressCode />
+
         <GuestInfo />
-        {/* <RSVP /> */}
-        {/* <Wishes /> */}
+
         <Footer />
       </motion.div>
 
-      {introDone ? <MusicControl /> : null}
+      {introDone && <MusicControl />}
     </main>
   );
 }
