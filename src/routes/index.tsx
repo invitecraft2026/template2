@@ -25,13 +25,29 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "description",
+        content: description,
+      },
+      {
+        property: "og:title",
+        content: title,
+      },
+      {
+        property: "og:description",
+        content: description,
+      },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
     ],
   }),
+
   component: Index,
 });
 
@@ -39,12 +55,20 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#4d1f29]">
+    <main className="relative min-h-[100dvh] overflow-x-hidden bg-transparent">
       {/* =========================================
-          GLOBAL VIDEO BACKGROUND
+          GLOBAL FIXED VIDEO BACKGROUND
           ========================================= */}
       {introDone && (
-        <div className="pointer-events-none fixed inset-0 z-0 h-[100svh] w-full overflow-hidden">
+        <div
+          className="
+            pointer-events-none
+            fixed
+            inset-0
+            z-0
+            overflow-hidden
+          "
+        >
           <video
             src={scenicBackground}
             autoPlay
@@ -53,17 +77,21 @@ function Index() {
             playsInline
             preload="auto"
             disablePictureInPicture
-            className="h-full w-full object-cover object-center"
+            className="
+              absolute
+              inset-0
+              h-full
+              w-full
+              object-cover
+              object-center
+            "
           />
 
-          {/* Global cinematic overlay */}
-          <div className="absolute inset-0 bg-black/15" />
+          {/* Very light darkening for text readability */}
+          <div className="absolute inset-0 bg-black/10" />
 
-          {/* Burgundy tint so every section matches the theme */}
-          <div className="absolute inset-0 bg-[#541f2e]/10" />
-
-          {/* Slight soft gradient for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20" />
+          {/* Very subtle burgundy tone */}
+          <div className="absolute inset-0 bg-[#541f2e]/5" />
         </div>
       )}
 
@@ -71,14 +99,18 @@ function Index() {
           ENVELOPE INTRO
           ========================================= */}
       {!introDone && (
-        <EnvelopeIntro onComplete={() => setIntroDone(true)} />
+        <EnvelopeIntro
+          onComplete={() => setIntroDone(true)}
+        />
       )}
 
       {/* =========================================
-          WEBSITE CONTENT
+          COMPLETE WEBSITE CONTENT
           ========================================= */}
       <motion.div
-        initial={{ opacity: 0 }}
+        initial={{
+          opacity: 0,
+        }}
         animate={{
           opacity: introDone ? 1 : 0,
         }}
@@ -86,7 +118,12 @@ function Index() {
           duration: 0.9,
           ease: "easeInOut",
         }}
-        className="relative z-10"
+        className="
+          relative
+          z-10
+          min-h-[100dvh]
+          bg-transparent
+        "
       >
         <HeroSection start={introDone} />
 
