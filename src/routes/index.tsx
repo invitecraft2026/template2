@@ -1,13 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
-import scenicBackground from "@/assets/Animated_scenic_landscape.mp4";
-import scenicPoster from "@/assets/romatic_burgund_garden.png";
-
 import { DressCode } from "@/components/DressCode";
 import { EnvelopeIntro } from "@/components/EnvelopeIntro";
 import { EventTimeline } from "@/components/EventTimeline";
 import { Footer } from "@/components/Footer";
+import { GlobalVideoBackground } from "@/components/GlobalVideoBackground";
 import { GuestInfo } from "@/components/GuestInfo";
 import { HeroSection } from "@/components/HeroSection";
 import { InvitationMessage } from "@/components/InvitationMessage";
@@ -25,13 +23,34 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
-      { name: "description", content: description },
-      { property: "og:title", content: title },
-      { property: "og:description", content: description },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+
+      {
+        name: "description",
+        content: description,
+      },
+
+      {
+        property: "og:title",
+        content: title,
+      },
+
+      {
+        property: "og:description",
+        content: description,
+      },
+
+      {
+        property: "og:type",
+        content: "website",
+      },
+
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
     ],
   }),
+
   component: Index,
 });
 
@@ -39,111 +58,76 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[#4d1f29]">
-
+    <>
       {/* =====================================================
-          PERMANENT GLOBAL BACKGROUND
-          Keep this mounted from the very beginning.
+          GLOBAL VIDEO
+
+          Completely outside the scrolling page.
+          Never scrolls with Hero or other sections.
           ===================================================== */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#4d1f29]"
-        style={{
-          transform: "translate3d(0, 0, 0)",
-          WebkitTransform: "translate3d(0, 0, 0)",
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
-          willChange: "transform",
-        }}
-        aria-hidden="true"
-      >
-        {/* STATIC FALLBACK IMAGE
 
-            This is extremely important on mobile.
-
-            If Chrome temporarily stops drawing the video
-            while scrolling, this exact scenery remains
-            underneath instead of showing white.
-        */}
-        <img
-          src={scenicPoster}
-          alt=""
-          draggable={false}
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{
-            transform: "translate3d(0, 0, 0)",
-            WebkitTransform: "translate3d(0, 0, 0)",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-          }}
-        />
-
-        {/* ANIMATED SCENERY */}
-        <video
-          src={scenicBackground}
-          poster={scenicPoster}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          disablePictureInPicture
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          style={{
-            transform: "translate3d(0, 0, 0)",
-            WebkitTransform: "translate3d(0, 0, 0)",
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-            willChange: "transform",
-          }}
-        />
-
-        {/* Keep only a very subtle overlay */}
-        <div className="absolute inset-0 bg-black/[0.06]" />
-      </div>
-
-      {/* =====================================================
-          ENVELOPE INTRO
-          ===================================================== */}
-      {!introDone && (
-        <EnvelopeIntro
-          onComplete={() => setIntroDone(true)}
-        />
-      )}
+      <GlobalVideoBackground />
 
       {/* =====================================================
           WEBSITE
-          
-          IMPORTANT:
-          No Framer Motion opacity animation around the
-          entire scrolling page. Individual components
-          already have their own animations.
           ===================================================== */}
-      <div
-        className="relative z-10 min-h-screen bg-transparent"
-        style={{
-          backgroundColor: "transparent",
-        }}
+
+      <main
+        className="
+          relative
+          z-10
+          min-h-screen
+          overflow-x-clip
+          bg-transparent
+        "
       >
-        <HeroSection start={introDone} />
+        {/* Envelope intro */}
 
-        <ScratchReveal />
+        {!introDone && (
+          <EnvelopeIntro
+            onComplete={() => {
+              setIntroDone(true);
+            }}
+          />
+        )}
 
-        <InvitationMessage />
+        {/* Main invitation */}
 
-        <EventTimeline />
+        <div
+          className={`
+            relative
+            bg-transparent
+            transition-opacity
+            duration-700
 
-        <SaveTheDate />
+            ${
+              introDone
+                ? "opacity-100"
+                : "pointer-events-none opacity-0"
+            }
+          `}
+        >
+          <HeroSection start={introDone} />
 
-        <VenueSection />
+          <ScratchReveal />
 
-        <DressCode />
+          <InvitationMessage />
 
-        <GuestInfo />
+          <EventTimeline />
 
-        <Footer />
-      </div>
+          <SaveTheDate />
 
-      {introDone && <MusicControl />}
-    </main>
+          <VenueSection />
+
+          <DressCode />
+
+          <GuestInfo />
+
+          <Footer />
+        </div>
+
+        {introDone && <MusicControl />}
+      </main>
+    </>
   );
 }

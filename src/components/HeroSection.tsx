@@ -4,8 +4,27 @@ import { wedding } from "@/config/wedding";
 
 export function HeroSection({ start }: { start: boolean }) {
   return (
-    <section className="relative isolate min-h-[100svh] w-full overflow-hidden bg-transparent">
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 py-14 text-center">
+    <section
+      className="
+        relative
+        w-full
+        min-h-[100svh]
+        bg-transparent
+      "
+    >
+      <div
+        className="
+          relative
+          flex
+          min-h-[100svh]
+          flex-col
+          items-center
+          justify-between
+          px-6
+          py-14
+          text-center
+        "
+      >
         <motion.div
           initial={{
             opacity: 0,
@@ -39,7 +58,7 @@ export function HeroSection({ start }: { start: boolean }) {
               {wedding.bride.firstName}
             </h2>
 
-            <span className="font-script -my-1 text-xl text-champagne drop-shadow-[0_1px_6px_rgba(0,0,0,0.5)] sm:text-2xl">
+            <span className="font-script -my-1 text-xl text-champagne sm:text-2xl">
               &amp;
             </span>
 
@@ -50,7 +69,9 @@ export function HeroSection({ start }: { start: boolean }) {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{
+            opacity: 0,
+          }}
           animate={{
             opacity: start ? 1 : 0,
           }}
@@ -69,7 +90,7 @@ export function HeroSection({ start }: { start: boolean }) {
             height="18"
             viewBox="0 0 24 24"
             aria-hidden
-            className="mx-auto mt-2 text-champagne drop-shadow-[0_1px_5px_rgba(0,0,0,0.5)]"
+            className="mx-auto mt-2 text-champagne"
             animate={
               start
                 ? {
