@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
 import { useState } from "react";
 
 import scenicBackground from "@/assets/Animated_scenic_landscape.mp4";
+import scenicPoster from "@/assets/romatic_burgund_garden.png";
 
 import { DressCode } from "@/components/DressCode";
 import { EnvelopeIntro } from "@/components/EnvelopeIntro";
@@ -25,29 +25,13 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
-      {
-        name: "description",
-        content: description,
-      },
-      {
-        property: "og:title",
-        content: title,
-      },
-      {
-        property: "og:description",
-        content: description,
-      },
-      {
-        property: "og:type",
-        content: "website",
-      },
-      {
-        name: "twitter:card",
-        content: "summary_large_image",
-      },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-
   component: Index,
 });
 
@@ -55,75 +39,90 @@ function Index() {
   const [introDone, setIntroDone] = useState(false);
 
   return (
-    <main className="relative min-h-[100dvh] overflow-x-hidden bg-transparent">
-      {/* =========================================
-          GLOBAL FIXED VIDEO BACKGROUND
-          ========================================= */}
-      {introDone && (
-        <div
-          className="
-            pointer-events-none
-            fixed
-            inset-0
-            z-0
-            overflow-hidden
-          "
-        >
-          <video
-            src={scenicBackground}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            className="
-              absolute
-              inset-0
-              h-full
-              w-full
-              object-cover
-              object-center
-            "
-          />
+    <main className="relative min-h-screen overflow-x-hidden bg-[#4d1f29]">
 
-          {/* Very light darkening for text readability */}
-          <div className="absolute inset-0 bg-black/10" />
+      {/* =====================================================
+          PERMANENT GLOBAL BACKGROUND
+          Keep this mounted from the very beginning.
+          ===================================================== */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0 overflow-hidden bg-[#4d1f29]"
+        style={{
+          transform: "translate3d(0, 0, 0)",
+          WebkitTransform: "translate3d(0, 0, 0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+          willChange: "transform",
+        }}
+        aria-hidden="true"
+      >
+        {/* STATIC FALLBACK IMAGE
 
-          {/* Very subtle burgundy tone */}
-          <div className="absolute inset-0 bg-[#541f2e]/5" />
-        </div>
-      )}
+            This is extremely important on mobile.
 
-      {/* =========================================
+            If Chrome temporarily stops drawing the video
+            while scrolling, this exact scenery remains
+            underneath instead of showing white.
+        */}
+        <img
+          src={scenicPoster}
+          alt=""
+          draggable={false}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          style={{
+            transform: "translate3d(0, 0, 0)",
+            WebkitTransform: "translate3d(0, 0, 0)",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
+        />
+
+        {/* ANIMATED SCENERY */}
+        <video
+          src={scenicBackground}
+          poster={scenicPoster}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          style={{
+            transform: "translate3d(0, 0, 0)",
+            WebkitTransform: "translate3d(0, 0, 0)",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            willChange: "transform",
+          }}
+        />
+
+        {/* Keep only a very subtle overlay */}
+        <div className="absolute inset-0 bg-black/[0.06]" />
+      </div>
+
+      {/* =====================================================
           ENVELOPE INTRO
-          ========================================= */}
+          ===================================================== */}
       {!introDone && (
         <EnvelopeIntro
           onComplete={() => setIntroDone(true)}
         />
       )}
 
-      {/* =========================================
-          COMPLETE WEBSITE CONTENT
-          ========================================= */}
-      <motion.div
-        initial={{
-          opacity: 0,
+      {/* =====================================================
+          WEBSITE
+          
+          IMPORTANT:
+          No Framer Motion opacity animation around the
+          entire scrolling page. Individual components
+          already have their own animations.
+          ===================================================== */}
+      <div
+        className="relative z-10 min-h-screen bg-transparent"
+        style={{
+          backgroundColor: "transparent",
         }}
-        animate={{
-          opacity: introDone ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.9,
-          ease: "easeInOut",
-        }}
-        className="
-          relative
-          z-10
-          min-h-[100dvh]
-          bg-transparent
-        "
       >
         <HeroSection start={introDone} />
 
@@ -142,7 +141,7 @@ function Index() {
         <GuestInfo />
 
         <Footer />
-      </motion.div>
+      </div>
 
       {introDone && <MusicControl />}
     </main>

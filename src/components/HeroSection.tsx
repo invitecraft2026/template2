@@ -4,8 +4,8 @@ import { wedding } from "@/config/wedding";
 
 export function HeroSection({ start }: { start: boolean }) {
   return (
-    <section className="relative isolate min-h-[100dvh] w-full overflow-hidden bg-transparent">
-      <div className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-between px-6 py-14 text-center">
+    <section className="relative isolate min-h-[100svh] w-full overflow-hidden bg-transparent">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-between px-6 py-14 text-center">
         <motion.div
           initial={{
             opacity: 0,
@@ -50,9 +50,7 @@ export function HeroSection({ start }: { start: boolean }) {
         </motion.div>
 
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
+          initial={{ opacity: 0 }}
           animate={{
             opacity: start ? 1 : 0,
           }}
