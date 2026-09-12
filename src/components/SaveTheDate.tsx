@@ -93,13 +93,13 @@ export function SaveTheDate() {
           <div className="mt-10">
             <div className="mt-8 grid grid-cols-4 gap-4">
               <div>
-                <p className="text-3xl font-light tracking-wide text-champagne drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)] sm:text-4xl">
-                  {timeLeft.days}
-                </p>
+               <p className="wedding-title text-3xl font-light tracking-wide sm:text-4xl">
+  {timeLeft.days}
+</p>
 
-                <p className="mt-2 text-xs uppercase tracking-[0.25em] text-[#fff4ea]/80 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
-                  Days
-                </p>
+                <p className="wedding-muted mt-2 text-xs uppercase tracking-[0.25em]">
+  Days
+</p>
               </div>
 
               <div>

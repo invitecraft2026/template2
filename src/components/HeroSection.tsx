@@ -41,30 +41,30 @@ export function HeroSection({ start }: { start: boolean }) {
           }}
           className="mx-auto max-w-sm"
         >
-          <p className="tracking-luxe text-[0.62rem] font-light uppercase text-cream/90 drop-shadow-[0_1px_5px_rgba(0,0,0,0.45)] sm:text-xs">
-            {wedding.welcomeLine}
-          </p>
+          <p className="tracking-luxe wedding-light text-[0.62rem] font-light uppercase sm:text-xs">
+  {wedding.welcomeLine}
+</p>
 
-          <h1 className="font-script mt-3 text-[2.75rem] leading-[1.05] text-champagne drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)] sm:text-[3.5rem]">
-            {wedding.welcomeTitle}
-          </h1>
+          <h1 className="font-script mt-3 text-[2.75rem] leading-[1.05] wedding-title sm:text-[3.5rem]">
+  {wedding.welcomeTitle}
+</h1>
 
           <p className="mt-2 text-xs italic tracking-wide text-cream/90 drop-shadow-[0_1px_5px_rgba(0,0,0,0.45)]">
             {wedding.welcomeJoin}
           </p>
 
           <div className="mt-3 flex flex-col items-center">
-            <h2 className="font-script text-5xl leading-none text-soft-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] sm:text-6xl">
-              {wedding.bride.firstName}
-            </h2>
+            <h2 className="font-script text-5xl leading-none wedding-light sm:text-6xl">
+  {wedding.bride.firstName}
+</h2>
 
             <span className="font-script -my-1 text-xl text-champagne sm:text-2xl">
               &amp;
             </span>
 
-            <h2 className="font-script text-5xl leading-none text-soft-white drop-shadow-[0_2px_14px_rgba(0,0,0,0.55)] sm:text-6xl">
-              {wedding.groom.firstName}
-            </h2>
+            <h2 className="font-script text-5xl leading-none wedding-light sm:text-6xl">
+  {wedding.groom.firstName}
+</h2>
           </div>
         </motion.div>
 
@@ -81,9 +81,9 @@ export function HeroSection({ start }: { start: boolean }) {
           }}
           className="mx-auto max-w-sm"
         >
-          <p className="mt-10 text-[0.6rem] tracking-[0.28em] uppercase text-cream/90 drop-shadow-[0_1px_5px_rgba(0,0,0,0.55)]">
-            Scroll to discover
-          </p>
+          <p className="mt-10 wedding-light text-[0.6rem] tracking-[0.28em] uppercase">
+  Scroll to discover
+</p>
 
           <motion.svg
             width="18"

@@ -85,42 +85,17 @@ export function EventTimeline() {
 
                         {/* Event info */}
                         <div className="pl-4 text-left">
-                          <p
-                            className="
-                              font-script
-                              text-xl
-                              text-champagne
-                              drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]
-                              sm:text-2xl
-                            "
-                          >
-                            {event.time}
-                          </p>
+                          <p className="font-script wedding-title text-xl sm:text-2xl">
+  {event.time}
+</p>
 
-                          <h3
-                            className="
-                              mt-1
-                              text-sm
-                              tracking-[0.15em]
-                              text-[#fff7ed]
-                              uppercase
-                              drop-shadow-[0_1px_4px_rgba(0,0,0,0.55)]
-                            "
-                          >
-                            {event.title}
-                          </h3>
+                          <h3 className="wedding-light mt-1 text-sm tracking-[0.15em] uppercase">
+  {event.title}
+</h3>
 
-                          <p
-                            className="
-                              mt-1
-                              text-xs
-                              leading-relaxed
-                              text-[#f8e9dc]/90
-                              drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]
-                            "
-                          >
-                            {event.venue}
-                          </p>
+                          <p className="wedding-muted mt-1 text-xs leading-relaxed">
+  {event.venue}
+</p>
                         </div>
                       </>
                     ) : (

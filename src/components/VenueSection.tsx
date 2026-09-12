@@ -53,55 +53,39 @@ export function VenueSection() {
 
         <Reveal delay={0.2}>
           <div className="mt-6 text-center">
-            <h3
-              className="
-                text-lg
-                uppercase
-                tracking-[0.2em]
-                text-[#fff7ed]
-                drop-shadow-[0_1px_5px_rgba(0,0,0,0.55)]
-              "
-            >
-              {wedding.venue.name}
-            </h3>
+            <h3 className="wedding-light text-lg uppercase tracking-[0.2em]">
+  {wedding.venue.name}
+</h3>
 
-            <p
-              className="
-                mt-2
-                text-sm
-                leading-relaxed
-                text-[#fff3e6]/85
-                drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]
-              "
-            >
-              {wedding.venue.address}
-            </p>
+            <p className="wedding-muted mt-2 text-sm leading-relaxed">
+  {wedding.venue.address}
+</p>
 
             <a
-              href={mapsDirectionsUrl(wedding.venue.mapsQuery)}
-              target="_blank"
-              rel="noreferrer"
-              className="
-                mt-6
-                inline-block
-                rounded-md
-                border
-                border-champagne/70
-                bg-[#6b2b38]/35
-                px-6
-                py-3
-                text-[0.62rem]
-                uppercase
-                tracking-[0.24em]
-                text-[#fff7ed]
-                shadow-[0_6px_20px_rgba(0,0,0,0.18)]
-                transition-all
-                duration-300
-                hover:bg-[#6b2b38]/55
-              "
-            >
-              Get Directions
-            </a>
+  href={mapsDirectionsUrl(wedding.venue.mapsQuery)}
+  target="_blank"
+  rel="noreferrer"
+  className="
+    mt-6
+    inline-block
+    rounded-md
+    border
+    border-[#e8c996]
+    bg-[#571d2b]/75
+    px-6
+    py-3
+    text-[0.62rem]
+    uppercase
+    tracking-[0.24em]
+    text-[#fff8ef]
+    shadow-[0_6px_20px_rgba(0,0,0,0.30)]
+    transition-all
+    duration-300
+    hover:bg-[#571d2b]/90
+  "
+>
+  Get Directions
+</a>
           </div>
         </Reveal>
       </div>

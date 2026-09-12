@@ -44,31 +44,21 @@ export function GlobalVideoBackground() {
         backgroundColor: "#4d1f29",
       }}
     >
-      <video
-        src={scenicBackground}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        disablePictureInPicture
-        controls={false}
-        className="absolute inset-0 h-full w-full object-cover object-center"
-        style={{
-          transform: "translate3d(0,0,0)",
-          WebkitTransform: "translate3d(0,0,0)",
+    <video
+  src={scenicBackground}
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="auto"
+  disablePictureInPicture
+  controls={false}
+  className="absolute inset-0 h-full w-full object-cover object-center"
+/>
 
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
+<div className="absolute inset-0 bg-black/30" />
 
-          willChange: "transform",
-        }}
-      />
-
-      {/* Global tint */}
-      <div className="absolute inset-0 bg-black/[0.06]" />
-
-      <div className="absolute inset-0 bg-[#541f2e]/[0.04]" />
+<div className="absolute inset-0 bg-[#3f101d]/15" />
     </div>,
     document.body
   );
